@@ -1,4 +1,4 @@
-# Flask app with MYSQL database.
+# Flask app with PostgreSQL database.
 
 ### Installation
 ```bash
@@ -30,6 +30,6 @@ sudo -i -u postgres
 ```bash
 psql managing_db
 ```
-```bash
+```sql
 \d users;
 ```
