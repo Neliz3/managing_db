@@ -1,0 +1,16 @@
+{% extends "base_admin.html" %}
+{% block title %}View{% endblock %}
+{% block content %}
+    <table border="1">
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+        </tr>
+        {% for item in values %}
+            <tr>
+                <td>{{item.name}}</td>
+                <td>{{item.email}}</td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}
