@@ -8,7 +8,6 @@
     * [Technologies Used](#Technologies-Used)
     * [Installation](#Installation)
     * [Requirements](#Requirements)
-    * [Project status](#Project-status)
     * [Room for improvement](#Room-for-improvement)
         * [Future features](#Future-features)
         * [Future changing](#Future-changing)
