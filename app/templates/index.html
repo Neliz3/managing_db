@@ -1,5 +1,24 @@
 {% extends "base.html" %}
-{% block title %}Home page{% endblock %}
+{% block title %}Оптова база{% endblock %}
 {% block content %}
-    <h1>home page</h1>
+    <div class="text-center py-5">
+        <h1 class="display-6">Оптова база <em><small class="text-primary fs-1">Dentic base</small></em></h1>
+        <h6 class="fw-light fs-6 font-monospace text-muted">Будь ласка, оберіть роль:</h6>
+        <div class="row my-5 align-items-center w-auto">
+            <div class="col">
+                <a href="/shop">
+                    <button type="button" class="btn btn-outline-warning btn-lg">
+                        Магазин
+                    </button>
+                </a>
+            </div>
+            <div class="col">
+                <a href="/login">
+                    <button type="button" class="btn btn-outline-danger btn-lg">
+                        Оптова база
+                    </button>
+                </a>
+            </div>
+        </div>
+    </div>
 {% endblock %}

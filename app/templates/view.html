@@ -1,16 +1,79 @@
 {% extends "base_admin.html" %}
 {% block title %}View{% endblock %}
 {% block content %}
-    <table border="1">
+    <div class="row d-grid align-items-center">
+        <h1>Заявки</h1>
+        <form action="{{ url_for('admin.forward', export='orders') }}" method="POST">
+            <button id="btnExport" class="fw-bold btn btn-primary" type="submit">Згенерувати Excel звіт (заявки)
+            </button>
+        </form>
+    </div>
+    <table class="table" id="table">
+        <caption>List of Orders</caption>
+        <thead class="table-light">
         <tr>
-            <th>Name</th>
-            <th>Email</th>
+            <th scope="col">#</th>
+            <th scope="col">Магазин</th>
+            <th scope="col">Рік замовлення</th>
+            <th scope="col">Товари (кількість)</th>
         </tr>
-        {% for item in values %}
+        </thead>
+        <tbody class="table-group-divider">
+        {% for item in orders %}
             <tr>
-                <td>{{item.name}}</td>
-                <td>{{item.email}}</td>
+                <td>{{ item.id_order }}</td>
+                {% for nm in shops %}
+                    {% if nm.id_shop == item.id_shop %}
+                        <td>{{ nm.name }}</td>
+                    {% endif %}
+                {% endfor %}
+                <td>{{ item.year_order }}</td>
+                {% for det in details %}
+                    {% if item.id_order == det.id_order %}
+                        {% for pr in product %}
+                            {% if det.id_product == pr.id_product %}
+                                <td>
+                                    <ul>
+                                        <li>
+                                            {{ pr.title }} ({{ det.quantity }})
+                                        </li>
+                                    </ul>
+                                </td>
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
+                {% endfor %}
             </tr>
         {% endfor %}
+        {% if "new_product" in session %}
+            <tr>
+                <td colspan="4" class="text-white bg-dark">Запропоновані товари(кількість):
+                    {% for key, value in session["new_product"].items() %}
+                        {{ key }} ({{ value }}) | {{ session["shop"] }}</td></tr>
+                    {% endfor %}
+        {% endif %}
+        </tbody>
+    </table>
+    <div class="row d-grid my-3 align-items-center">
+        <h1>Адміністратори</h1>
+    </div>
+    <table class="table">
+        <caption>List of Administrators</caption>
+        <thead class="table-light">
+        <tr>
+            <th scope="col">Ім'я</th>
+            <th scope="col">Прізвище</th>
+            <th scope="col">Пошта</th>
+        </tr>
+        </thead>
+        <tbody class="table-group-divider">
+        {% for item in values %}
+            <tr>
+                <td>{{ item.first_name }}</td>
+                <td>{{ item.last_name }}</td>
+                <td>{{ item.email }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
     </table>
 {% endblock %}

@@ -1,0 +1,98 @@
+{% extends "base_admin.html" %}
+{% block title %}Товари{% endblock %}
+{% block content %}
+    <div class="row d-grid align-items-center">
+        <h5 class="col offset-5">
+            <a href="?act=add" class="d-6 link-warning">
+                --- Додати продукт ---
+            </a>
+        </h5>
+    </div>
+    <div class="row my-3 d-grid align-items-center">
+        <h1>Продукти на складі</h1>
+        <form action="{{ url_for('admin.forward', export='products') }}" method="POST">
+            <button id="btnExport" class="fw-bold btn btn-primary" type="submit">Згенерувати Excel звіт (продукти)
+            </button>
+        </form>
+    </div>
+    <table class="table">
+        <caption>Products</caption>
+        <thead class="table-light">
+        <tr>
+            <th scope="col">Найменування</th>
+            <th scope="col">Кількість</th>
+            <th scope="col" colspan="2">Налаштування</th>
+        </tr>
+        </thead>
+        <tbody class="table-group-divider">
+        {% for item in products %}
+            <tr>
+                <td scope="row">{{ item.title }}</td>
+                <td>{{ item.amount }}</td>
+                <td><a href="?act=edit&id={{ item.id_product }}">Редагувати</a></td>
+                <td><a href="?act=delete&id={{ item.id_product }}">Видалити</a></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    {% if add == True %}
+        <div class="row d-grid my-3 align-items-center">
+            <h3>Додати продукт</h3>
+        </div>
+        <div class="row align-items-center d-grid w-50">
+            <form action="#" method="post">
+                <div class="row align-items-center w-auto">
+                    <div class="col-8">
+                        <label for="exampleFormControlInput1"><input type="text" name="title"
+                                                                     class="form-control form-control-lg"
+                                                                     id="exampleFormControlInput1"
+                                                                     placeholder="Enter a title of a product"
+                                                                     required/></label>
+                    </div>
+                    <div class="col-4">
+                        <label for="exampleFormControlInput1"><input type="number" name="amount"
+                                                                     class="form-control form-control-lg"
+                                                                     id="exampleFormControlInput1"
+                                                                     placeholder="Enter an amount of products"
+                                                                     required/></label>
+                    </div>
+                </div>
+                <div class="row my-3">
+                    <button class="btn btn-primary" type="submit" name="submit">Додати продукт</button>
+                </div>
+            </form>
+        </div>
+    {% endif %}
+
+    {% if edit == True %}
+        <div class="row d-grid my-3 align-items-center">
+            <h3>Редагувати продукт</h3>
+        </div>
+        <div class="row align-items-center d-grid w-50">
+            <form action="#" method="post">
+                <div class="row align-items-center w-auto">
+                    <div class="col-8">
+                        <label for="exampleFormControlInput1"><input type="text" name="title"
+                                                                     class="form-control form-control-lg"
+                                                                     id="exampleFormControlInput1"
+                                                                     placeholder="Enter a title of a product"
+                                                                     value="{{ product.title }}"
+                                                                     required/></label>
+                    </div>
+                    <div class="col-4">
+                        <label for="exampleFormControlInput1"><input type="number" name="amount"
+                                                                     class="form-control form-control-lg"
+                                                                     id="exampleFormControlInput1"
+                                                                     placeholder="Enter an amount of products"
+                                                                     value="{{ product.amount }}"
+                                                                     required/></label>
+                    </div>
+                </div>
+                <div class="row my-3">
+                    <button class="btn btn-primary" type="submit" name="submit">Редагувати продукт</button>
+                </div>
+            </form>
+        </div>
+    {% endif %}
+{% endblock %}

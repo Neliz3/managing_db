@@ -1,11 +1,48 @@
 {% extends "base.html" %}
 {% block title %}Login page{% endblock %}
 {% block content %}
-<form action="#" method="post">
-    <p><input type="email" name="email" placeholder="Enter email"
-              value="{{email if email}}"/></p>
-    <p><input type="password" name="pswd" placeholder="Enter a password"
-              value="{{password if password}}"/></p>
-    <p><input type="submit" value="submit"/></p>
-</form>
+    <div class="py-5 fw-bold">
+        <form action="#" method="post">
+            <div class="row align-items-center">
+                <div class="col-4">
+                    <label for="exampleFormControlInput1" class="form-label">Email</label>
+                </div>
+                <div class="col">
+                    <input type="email" class="form-control form-control-lg" id="exampleFormControlInput1"
+                           name="email"
+                           autofocus
+                           value="{{ email if email }}"
+                           placeholder="name@example.com"
+                           required>
+                </div>
+            </div>
+            <div class="row my-3 align-items-center">
+                <div class="col-4">
+                    <label for="inputPassword6" class="col-form-label">Password</label>
+                </div>
+                <div class="col">
+                    <input type="password"
+                           id="inputPassword6"
+                           class="form-control form-control-lg"
+                           aria-describedby="passwordHelpInline"
+                           name="pswd"
+                           required
+                           placeholder="Enter a password">
+                </div>
+            </div>
+            <div class="row my-3">
+                <button class="fw-bold btn btn-primary" type="submit" name="submit">Вхід</button>
+            </div>
+        </form>
+        <div class="row my-3">
+            <a href="/signup" class="link-info fs-4 fw-bold text-center text-opacity-25">sign up</a>
+
+        </div>
+        {% if alert == 'forgot_password' %}
+            <div class="row my-3">
+                <a href="/forgot_password" class="link-danger fs-4 fw-bold text-center text-opacity-25">forgot
+                    password</a>
+            </div>
+        {% endif %}
+    </div>
 {% endblock %}

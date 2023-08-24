@@ -8,5 +8,4 @@ app.config['SECRET_KEY'] = 'necamkoedm3kdcda9ewjedecd'
 
 db = SQLAlchemy(app)
 
-
 from . import models

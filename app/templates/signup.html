@@ -1,10 +1,52 @@
 {% extends "base.html" %}
 {% block title %}Login page{% endblock %}
 {% block content %}
-<form action="#" method="post">
-    <p><input type="text" name="nm" placeholder="Enter a name" /></p>
-    <p><input type="email" name="email" placeholder="Enter email" /></p>
-    <p><input type="password" name="pswd" placeholder="Enter a password" /></p>
-    <p><input type="submit" value="submit"/></p>
-</form>
+    <div class="row d-grid align-items-center">
+        <h1>Форма реєстрації</h1>
+    </div>
+    <div>
+        <form action="#" method="post">
+            <div class="row my-3 align-items-center">
+                <label for="exampleFormControlInput1">
+                    <input type="text" name="first_name"
+                           class="form-control form-control-lg" id="exampleFormControlInput1"
+                           placeholder="Enter a first name"
+                           required/>
+                </label>
+            </div>
+            <div class="row my-3 align-items-center">
+                <label for="exampleFormControlInput1">
+                    <input type="text" name="last_name"
+                           class="form-control form-control-lg" id="exampleFormControlInput1"
+                           placeholder="Enter a last name"
+                           required/>
+                </label>
+            </div>
+            <div class="row my-3 align-items-center">
+                <label for="exampleFormControlInput1">
+                    <input type="email" name="email"
+                           class="form-control form-control-lg" id="exampleFormControlInput1"
+                           placeholder="Enter email"
+                           value="{{ email if email }}"
+                           required/>
+                </label>
+            </div>
+            <div class="row my-3 align-items-center">
+                <label for="inputPassword6">
+                    <input type="password" name="pswd"
+                           id="inputPassword6"
+                           class="form-control form-control-lg"
+                           aria-describedby="passwordHelpInline"
+                           placeholder="Enter a password"
+                           required/>
+                </label>
+            </div>
+
+            <div class="row my-3">
+                <div class="col offset 1">
+                    <button class="btn btn-primary" type="submit" name="submit">Зареєструватися</button>
+                </div>
+            </div>
+        </form>
+    </div>
 {% endblock %}

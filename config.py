@@ -1,7 +1,6 @@
 import dotenv
 import os
 
-
 # Initialize environment variables
 dotenv.load_dotenv('/home/elizabeth/managing_db/.env')
 conn_row = os.getenv("CONNECTION_ROW")

@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+{% block title %}Заявка{% endblock %}
+{% block content %}
+    <script>
+        function add_input() {
+            let container = document.getElementById("space");
+            let input_title = document.createElement("input");
+            input_title.type = "text";
+            input_title.name = "new_product";
+            input_title.className = "form-control form-control-lg";
+            input_title.id = "exampleFormControlInput1";
+            input_title.placeholder = "Enter a title of a product";
+
+            let input_amount = document.createElement("input");
+            input_amount.type = "number";
+            input_amount.name = "new_amount";
+            input_amount.className = "form-control form-control-lg";
+            input_amount.id = "exampleFormControlInput1";
+            input_amount.placeholder = "Enter an amount of products";
+
+            let div1 = document.createElement("div")
+            div1.id = "first_div";
+            div1.className = "col-8";
+            container.appendChild(div1);
+
+            let div1_block = document.getElementById("first_div")
+            div1_block.appendChild(input_title);
+
+            let div2 = document.createElement("div")
+            div2.id = "second_div";
+            div2.className = "col-4";
+            container.appendChild(div2);
+
+            let div2_block = document.getElementById("second_div")
+            div2_block.appendChild(input_amount);
+
+        }
+    </script>
+
+    <div class="row d-grid align-items-center">
+        <h3>Подати заявку</h3>
+    </div>
+    <div class="row d-grid align-items-center w-100 h-100 mt-1">
+        <form action="#" method="post">
+            <div class="row align-items-center">
+                <label for="exampleFormControlInput1">
+                    <input type="text" name="shop"
+                           class="form-control form-control-lg" id="exampleFormControlInput1"
+                           required placeholder="Enter a title of a shop"/>
+                </label>
+            </div>
+            <div class="row my-3 align-items-center w-auto">
+                <div class="col-8">
+                    <select name="product"
+                            class="form-select" aria-label="Default select example">
+                        {% for x in list %}
+                            <option value="{{ x.id_product }}">{{ x.title }} ({{ x.amount }})</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="col-4">
+                    <label for="exampleFormControlInput1">
+                        <input type="number" name="amount" required placeholder="Enter an amount of products"
+                               class="form-control form-control-lg" id="exampleFormControlInput1"/>
+                    </label>
+                </div>
+            </div>
+            <div class="row my-3 align-items-center w-auto" id="space"></div>
+            <div class="row my-3">
+                <button class="btn btn-primary" id="add" onclick='add_input()'>Додати продукт</button>
+            </div>
+            <div class="row my-3">
+                <button class="btn btn-primary" type="submit" name="submit">Замовити</button>
+            </div>
+        </form>
+    </div>
+{% endblock %}

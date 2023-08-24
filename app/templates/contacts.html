@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}Контакти{% endblock %}
+{% block content %}
+    <div class="text-center py-5">
+        <div class="row">
+            <div class="col">
+                <div class="card" style="width: 18rem; height: 100%">
+                    <img src="{{ url_for('static', filename='images/dental.jpg') }}" alt="logo image" class="card-img">
+                    <div class="card-body">
+                        <h5 class="card-title">Dentic base</h5>
+                        <p class="card-text">Dentic base - українська мережа стоматологічної оптової торгівлі.</p>
+                        <p class="card-text"><small><i>+38 097 879 98 99</i></small></p>
+                        <p class="card-text"><small>Пр.І.Мазепи 33а</small></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card" style="width: 18rem;">
+                    <iframe class="card-img"
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d19654.94704835503!2d30.19792501587357!3d48.74785867155198!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40d20c4eeae4fccd%3A0x31429786bc3ee48e!2sVulytsya%20Mazepy%2C%2033%2C%20Uman&#39;%2C%20Cherkas&#39;ka%20oblast%2C%2020300!5e0!3m2!1sen!2sua!4v1692786328934!5m2!1sen!2sua"
+                            width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
