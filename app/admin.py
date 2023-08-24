@@ -1,9 +1,11 @@
-from flask import Blueprint, render_template, flash, session, redirect, url_for, request, Response
+from flask import Blueprint, render_template, flash, session, redirect, \
+    url_for, request
 from db.models import Admins, Products, Orders, Shop, Details
 from db import db
 from app.utils import exportOrders, exportProducts
 
-admin = Blueprint("admin", __name__, static_folder="static", template_folder="templates")
+admin = Blueprint("admin", __name__, static_folder="static",
+                  template_folder="templates")
 
 
 @admin.route("/forward/<export>", methods=['POST'])
@@ -42,7 +44,8 @@ def products():
         id_product = query_params.get('id')
         if act:
             if act == 'edit':
-                product = Products.query.filter_by(id_product=id_product).first()
+                product = Products.query.\
+                    filter_by(id_product=id_product).first()
                 product.title = request.form["title"]
                 product.amount = request.form["amount"]
                 flash("Продукт відредаговано!")
@@ -61,10 +64,14 @@ def products():
         id_product = query_params.get('id')
         if act:
             if act == 'edit':
-                product = Products.query.filter_by(id_product=id_product).first()
-                return render_template("products.html", values=Products.query.all(), edit=True, product=product)
+                product = Products.query.\
+                    filter_by(id_product=id_product).first()
+                return render_template("products.html",
+                                       values=Products.query.all(), edit=True,
+                                       product=product)
             elif act == 'add':
-                return render_template("products.html", values=Products.query.all(), add=True)
+                return render_template("products.html",
+                                       values=Products.query.all(), add=True)
             elif act == 'delete':
                 found_product = Products.query.filter_by(id_product=id_product)
                 if found_product.delete():
@@ -75,7 +82,8 @@ def products():
                 return redirect(url_for("admin.products"))
 
         elif "id" in session:
-            return render_template("products.html", products=Products.query.all())
+            return render_template("products.html",
+                                   products=Products.query.all())
         else:
             flash("You're not logged in", "info")
             return redirect(url_for("auth.login"))

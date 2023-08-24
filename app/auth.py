@@ -1,8 +1,10 @@
-from flask import Blueprint, render_template, request, redirect, url_for, session, flash
+from flask import Blueprint, render_template, request, redirect, \
+    url_for, session, flash
 from db import db
 from db.models import Admins
 
-auth = Blueprint("auth", __name__, static_folder="static", template_folder="templates")
+auth = Blueprint("auth", __name__, static_folder="static",
+                 template_folder="templates")
 
 
 @auth.route("/login", methods=['GET', 'POST'])
@@ -22,17 +24,20 @@ def login():
 
                 return redirect(url_for("admin.view"))
             else:
-                flash("You entered a wrong password. Try again, please.", "info")
+                flash("You entered a wrong password. Try again, please.",
+                      "info")
                 return redirect(url_for("auth.login", alert='forgot_password'))
         else:
-            flash("You are a new user. Welcome to registration page :)", "info")
+            flash("You are a new user. Welcome to registration page :)",
+                  "info")
             return redirect(url_for("auth.registration"))
     else:
         email = None if 'email' not in session else session['email']
         if "id" in session:
             return redirect(url_for("admin.view"))
         elif request.args:
-            return render_template("login.html", email=email, alert=request.args['alert'])
+            return render_template("login.html", email=email,
+                                   alert=request.args['alert'])
         else:
             return render_template("login.html", email=email)
 

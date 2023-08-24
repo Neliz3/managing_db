@@ -45,7 +45,8 @@ class Orders(db.Model):
     __tablename__ = "orders"
 
     id_order = db.Column(db.Integer, primary_key=True)
-    id_shop = db.Column(db.Integer, db.ForeignKey('shop.id_shop'), nullable=False)
+    id_shop = db.Column(db.Integer, db.ForeignKey('shop.id_shop'),
+                        nullable=False)
     year_order = db.Column(db.Integer)
     details = db.relationship('Details', back_populates='orders')
     shop = db.relationship("Shop", back_populates="orders")
@@ -59,8 +60,10 @@ class Details(db.Model):
     __tablename__ = "details"
 
     id = db.Column(db.Integer, primary_key=True)
-    id_order = db.Column(db.Integer, db.ForeignKey('orders.id_order'), nullable=False)
-    id_product = db.Column(db.Integer, db.ForeignKey('products.id_product'), nullable=False)
+    id_order = db.Column(db.Integer, db.ForeignKey('orders.id_order'),
+                         nullable=False)
+    id_product = db.Column(db.Integer, db.ForeignKey('products.id_product'),
+                           nullable=False)
     quantity = db.Column(db.Integer)
     orders = db.relationship("Orders", back_populates="details")
     product = db.relationship("Products", back_populates="details")

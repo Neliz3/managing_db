@@ -1,6 +1,41 @@
-# Flask app with PostgreSQL database.
+# Managing db | web-site for the wholesale database
+
+#### Web-site in Python using Flask, PostgreSQL and gspread library
+
+## Table of contents
+
+* [Setup](#Setup)
+    * [Technologies Used](#Technologies-Used)
+    * [Installation](#Installation)
+    * [Requirements](#Requirements)
+    * [Project status](#Project-status)
+    * [Room for improvement](#Room-for-improvement)
+        * [Future features](#Future-features)
+        * [Future changing](#Future-changing)
+
+## Setup
+
+* All packages are located in requirements.txt
+* Environmental variables are located in .env
+
+### Technologies Used
+
+* Python 3.8
+* Flask
+* Flask-SQLAlchemy
+* PostgreSQL
+* JavaScript
+* Bootstrap
 
 ### Installation
+
+```bash
+python3 -m venv env
+```
+
+```bash
+. env/bin/activate
+```
 
 ```bash
 pip install -r requirements.txt
@@ -46,6 +81,14 @@ sudo -i -u postgres
 psql managing_db
 ```
 
-```sql
-\d users;
-```
+
+### Room for improvement
+
+#### Future features
+
+* Adding new languages
+* Adding feature for an admin to do more actions
+
+#### Future changing
+
+* Rebuild a database structure for more opportunities (adding some tables)

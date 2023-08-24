@@ -12,7 +12,8 @@ def exportOrders():
     wks.clear()
 
     # Update a range of cells using the top left corner address
-    wks.update('A1', [["#", "Магазин", "Рік замовлення", "Товари (кількість)"]])
+    wks.update('A1', [["#", "Магазин", "Рік замовлення",
+                       "Товари (кількість)"]])
     count = 1
     for i in Orders.query.all():
         row = list()
